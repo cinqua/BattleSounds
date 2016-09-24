@@ -54,6 +54,13 @@ use github and put project containing `index.html` inside a colder called `docs`
 
 Make sure your [`.gitignore`](/.gitignore) excludes media file. and store video /audio elsewhere, eg dropbox public folder, or amazon s3 bucket. Don't commit media to git. makes the repo heavy, because of how git stores snapshots of files.
 
+## Google drive for slides 
+
+
+
+## bad VHS effect
+
+[seriously js](http://seriouslyjs.org/)
 
 
 
