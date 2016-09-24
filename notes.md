@@ -56,7 +56,14 @@ Make sure your [`.gitignore`](/.gitignore) excludes media file. and store video 
 
 ## Google drive for slides 
 
+[slides](https://docs.google.com/presentation/d/19TB4CpkCDqMJQvhmZF3I9AN7IQ0VsIA8nsfpdHkfDss/edit#slide=id.p)
 
+- Team 
+- Problem 
+- target audience
+- solution
+	- demo + github repo
+- Q&A
 
 ## bad VHS effect
 
