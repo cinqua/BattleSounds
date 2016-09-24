@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Battle Sound</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="vendor/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="public/css/custom.css">
+    <script type="text/javascript" src="vendor/js/tabletop.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="vendor/js/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="vendor/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  
+<div class="container">
+    <h1 ><span id="mainVideoTitle"></span> <small id="mainVideoDescription"></small></h1>
+  
+  <!--Main player  8 -->
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "> 
+        <video id="mainVideo"width="100%" height="100%" class="size" controls>
+          <source id="mainVideoSrc" src="dummy.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+    
+    </div>
+  </div>
+
+  <div class="row">
+    dkkd
+  </div>
+
+  <!-- Summplementary material  4  -->
+
+  <script>
+  // var video = document.getElementById("mainVideo");
+
+  window.onload = function() { init() };
+
+  var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1YlaEx8yftVVGlK7dcINtDdHZc3tZi_LUCJUNldtyXws/pubhtml";
+
+function init() {
+  Tabletop.init( { key: public_spreadsheet_url,
+                   callback: showInfo,
+                   simpleSheet: true } );
+}
+
+
+  function showInfo(data, tabletop) {
+    for (var i=0; i<data.length; i++){
+      var element = data[i];
+      if(element.content == "main_video"){
+        console.log("main")
+        console.log(element)
+
+        addMainVideo(element)
+
+      }else if(element.content == "supplementary_material"){
+        // console.log(element)
+      }
+    }
+  }
+
+function addMainVideo(videoElement){
+  // document.getElementById("mainVideo").innerHTML = (JSON.stringify(videoElement))
+
+  // document.getElementById("mainVideo").innerHTML = (JSON.stringify(videoElement));
+console.log(videoElement.url)
+  // var video = document.getElementById("mainVideo");
+  // var  source = document.createElement('source');
+  // source.setAttribute('src', videoElement.url);
+  // video.appendChild(source);
+ 
+   // .innerHTML = (JSON.stringify(videoElement));
+   loadVideo({
+    url: videoElement.url,
+    playerId:'mainVideo' , 
+    srcId:'mainVideoSrc'
+  })
+
+   addText(videoElement.title, "mainVideoTitle")
+  addText(videoElement.description, "mainVideoDescription")
+}
+
+function addText(title, titleId){
+  document.getElementById(titleId).innerText =title;
+}
+
+/**
+* params config object iwth url, playerId, srcId
+* loads the src to a video given the video url 
+*/
+function loadVideo(config){
+  var player = document.getElementById(config.playerId);
+  var mp4Vid = document.getElementById(config.srcId);
+  mp4Vid.src =config.url;
+  player.load();
+}
+
+
+  </script>
+
+</div>
+
+  </body>
+</html>
