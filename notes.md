@@ -69,5 +69,27 @@ Make sure your [`.gitignore`](/.gitignore) excludes media file. and store video 
 
 [seriously js](http://seriouslyjs.org/)
 
+## Google spreadsheet custom functions (TC calculator)
+[timecode claulator on google sheet](https://latenitefilms.com/blog/calculating-timecode-in-google-sheets/)
 
 
+Tools -> scirpt editor 
+
+```
+/**
+* Convert timecodes `hh:mm:ss:ms` to seconds
+* where ms are ignored
+*/
+function timecode_to_seconds(tc) {
+  var tc = tc.split(":")
+  var h = parseInt(tc[0])*60*60
+  var m = parseInt(tc[1])*60
+  var s =parseInt(tc[2])
+  
+  return h+m+s
+}
+```
+
+in excell sheet
+
+`=timecode_to_seconds(F2)` where in this case `F2` for example will contain a timecode `00:01:30:00` that will then be rendered as 90 (secs)

@@ -12,6 +12,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="vendor/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="public/css/custom.css">
+    <!-- <link rel="stylesheet" href="public/css/film_strip.css"> -->
     <link rel="stylesheet" href="public/css/overlay.css">
     <link rel="stylesheet" href="public/css/bootswatch.css">
     <script type="text/javascript" src="vendor/js/tabletop.js"></script>
@@ -46,33 +47,19 @@
   </div>
 
   <div class="row" id="summplementaryMaterial">
-    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 "> 
-      Video 1
-      <!-- Use any element to open/show the overlay navigation menu -->
-      <span onclick="openNav()">open
-      <img src="http://placehold.it/350x150"></span>
-    </div>
-     <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 "> 
-      Video 2
-      <img src="http://placehold.it/350x150">
-    </div>
-     <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 "> 
-      Video 3
-      <img src="http://placehold.it/350x150">
-    </div>
-     <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 "> 
-      Video 4
-      <img src="http://placehold.it/350x150">
-    </div>
+   <!-- sumpplementary material -->
+
   </div>
 
 
-  <div  id="myNav" class="overlay">
-    <!-- Button to close the overlay navigation -->
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-      some content
-    </div>
+  <div  id="myNav" class="overlay container">
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 "> 
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        some content
+      </div>
+     </div>
   </div>
 
   <!-- Summplementary material  4  -->
@@ -101,7 +88,9 @@ function init() {
         addMainVideo(element)
 
       }else if(element.content == "supplementary_material"){
-        // console.log(element)
+        console.log(element)
+          console.log(element.media_type)
+        addSupplemntaryElement(element)
       }
     }
   }
@@ -110,7 +99,8 @@ function addMainVideo(videoElement){
    loadVideo({
     url: videoElement.url,
     playerId:'mainVideo' , 
-    srcId:'mainVideoSrc'
+    srcId:'mainVideoSrc',
+    posterImg: videoElement.thumbnail
   })
   addText(videoElement.title, "mainVideoTitle")
   addText(videoElement.description, "mainVideoDescription")
@@ -120,25 +110,16 @@ function addText(title, titleId){
   document.getElementById(titleId).innerText =title;
 }
 
-/**
-* params config object iwth url, playerId, srcId
-* loads the src to a video given the video url 
-*/
-function loadVideo(config){
-  var player = document.getElementById(config.playerId);
-  var mp4Vid = document.getElementById(config.srcId);
-  mp4Vid.src =config.url;
-  player.load();
-}
 
 /**
 * to add sumplementary material element, looks at `media_type`
 * calls appropriate function to add that media type to the html
 */
 function addSupplemntaryElement(element){
+  console.log(element.media_type)
     switch (element.media_type) {
       case "video":
-          addVideo(element);
+          addPreview(element);
           break;
       case "audio":
           // addAudio(element);
@@ -165,17 +146,58 @@ function addSupplemntaryElement(element){
         }//end switch
 }
 
-function addVideo(videoElem){
- 
-  createVideoHTML({src: videoElem.url, elemId: videoElem.n, parentId:"summplementaryMaterial" })
+function addPreview(element){
+  // var divElementClip = document.createElement("Div");
+  // divElementClip.className = "clip";
+  // var divElementFilm = document.createElement("Div");
+
+
+    var parent = document.getElementById("summplementaryMaterial");
+    var previewImage = new Image();
+    previewImage.id = element.n;
+    previewImage.src = element.thumbnail;
+    previewImage.className= "sumplementaryMaterialPreview";
+    // previewImage.className = "film";
+    //add link 
+    // console.log(previewImage)
+    // divElementClip.appendChild(previewImage); 
+    parent.appendChild(previewImage); 
 }
 
-function createVideoHTML(config){
-   var summplementaryMaterial = document.getElementById(config.parentId)
+function addVideo(videoElem){
+ 
+  var parent = document.getElementById("summplementaryMaterial")
   var video = document.createElement('video');
-  video.src = src;
-  return video
+  video.id = videoElem.n;
+  video.className = "sumplementaryMaterialPreview";
+  video.src = videoElem.url;
+  video.poster = videoElem.posterImg;
+  console.log(video)
+  parent.appendChild(video); 
+
+  // loadVideo({
+  //   url: videoElem.url,
+  //   playerId:'summplementaryMaterial' , 
+  //   srcId: videoElem.n
+  // })
+
 }
+
+/**
+* params config object iwth url, playerId, srcId
+* loads the src to a video given the video url 
+*/
+function loadVideo(config){
+  var player = document.getElementById(config.playerId);
+  var mp4Vid = document.getElementById(config.srcId);
+  mp4Vid.src =config.url;
+  player.poster = config.posterImg;
+  console.log(player)
+  player.load();
+}
+
+
+
 
 </script>
 

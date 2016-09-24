@@ -1,2 +1,16 @@
 /* custom.css */
 
+
+.sumplementaryMaterialPreview{
+	width: 30%;
+}
+
+div#summplementaryMaterial {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 100%;
+    white-space: nowrap;
+}
+
+
+
