@@ -69,8 +69,11 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
       <div class="overlay-content">
-        <div id="supplementaryMaterialSidebar">
-          yo
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8
+          col-sm-offset-1 col-md-offset-1 col-lg-offset-2"> 
+          <div id="supplementaryMaterialSidebar">
+            yo
+          </div>
         </div>
       <!-- </div> -->
      </div>
@@ -168,6 +171,7 @@ function addVideo(videoElem, parentId, className){
   var video = document.createElement('video');
   video.id = videoElem.n;
   video.className = className;
+  video.className = "img-responsive";
   video.src = videoElem.url;
   video.poster = videoElem.thumbnail
    video.setAttribute("controls","controls")   
