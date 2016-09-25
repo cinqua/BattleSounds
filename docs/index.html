@@ -173,7 +173,7 @@ function addVideo(videoElem, parentId, className){
    video.setAttribute("controls","controls")   
   console.log(video)
   parent.appendChild(video); 
-  video.currentTime = videoElem.seconds_start;
+  video.currentTime = videoElem.media_start_second;
   video.play();
 
 }
