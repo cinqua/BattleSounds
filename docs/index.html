@@ -173,6 +173,9 @@ function addVideo(videoElem, parentId, className){
    video.setAttribute("controls","controls")   
   console.log(video)
   parent.appendChild(video); 
+  video.currentTime = videoElem.seconds_start;
+  video.play();
+
 }
 
 function addPreview(element){
@@ -191,10 +194,10 @@ function addPreview(element){
     previewImage.addEventListener("click", function(){
   
       previewImage.classList.toggle("bnw");
-       openNav()
+      openNav()
 
-       document.getElementById("supplementaryMaterialSidebar").innerHTML ="";
-         addVideo(element,"supplementaryMaterialSidebar","preview" )
+      document.getElementById("supplementaryMaterialSidebar").innerHTML ="";
+      addVideo(element,"supplementaryMaterialSidebar","preview" )
 
     });
     // previewImage.className = "film";
