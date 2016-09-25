@@ -15,12 +15,19 @@
 ## Demo 
 link to [demo](http://pietropassarelli.com/BattleSounds)
 
+## Tech used
+
+see [notes](/notes.md)
+
 
 ## Contributors 
 
 <!--Add Twitter/email links?  -->
 
-- John Carluccio <!-- <carluccio@cinqua.com> -->
-- Mark Kotlinski<!--  <mkotlinski@gmail.com> -->
-- Brian Redondo <!-- <brian.redondo@gmail.com> -->
+- John Carluccio 
+<!-- <carluccio@cinqua.com> -->
+- Mark Kotlinski 
+<!--  <mkotlinski@gmail.com> -->
+- Brian Redondo 
+<!-- <brian.redondo@gmail.com> -->
 - Pietro Passarelli 
