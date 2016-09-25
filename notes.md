@@ -119,3 +119,28 @@ https://fonts.google.com/specimen/Gochi+Hand?selection.family=Gochi+Hand
 https://github.com/fakob/MoviePrint_v002/blob/master/MoviePrint.xcodeproj/project.pbxproj
 
 http://www.fakob.com/2014/movieprint-an-osx-tool/
+
+
+## Social media share + captioning
+
+### quickQuoteNode
+[quickQuote node](https://github.com/pietrop/quickQuoteNode)
+more on quickQuote [here](pietropassarelli.com/quickQuote.html)
+
+![quickQuote Node](/img/quickQuoteNode.png)
+
+with difference that is an older version, and this version is node based and allows to tweet the video selection.
+
+![Twitter export](/img/twitter.png)
+
+### Caption burner 
+
+![captions tool](/img/captions.png)
+
+![Twitter export](/img/twitter_captions.png)
+
+[Catpions burner ](http://voxmedia.github.io/captions_burner/)
+
+to burn srt into video 
+
+![Captioned video ](/img/captioned_video.png)

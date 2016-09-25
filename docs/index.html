@@ -293,15 +293,18 @@ function loadVideo(config){
   //     previewImage.classList.toggle("bnw");
 
   // });
+  /**
+  * Words hilight 
+  */
  player.ontimeupdate = function() {
     console.log("playing")
+
+    //Words highlight
     var words =   document.getElementsByClassName("words")
 
     for(var i =0; i< words.length; i++){
       var word = words[i];
-       
-      console.log(parseInt(word.dataset.startTime))
-      console.log(parseInt(this.currentTime))
+      
       if(parseInt(word.dataset.startTime) < parseInt(this.currentTime)){ 
         if(!word.classList.contains('infocus')){
           word.classList.toggle("infocus")
@@ -311,21 +314,20 @@ function loadVideo(config){
           word.classList.toggle("infocus")
         } 
       }
-
-
-
-
-      // if(parseInt(word.dataset.startTime) > parseInt(this.currentTime)){
-      //   console.log(parseInt(word.dataset.startTime))
-      //   console.log(parseInt(this.dataset.currentTime))
-      //   // word.classList.toggle("infocus")
-      //   document.getElementsByClassName("words")[i].classList.toggle("infocus")
-      // }else{
-      //    // word.classList.toggle("infocus")
-      //    document.getElementsByClassName("words")[i].classList.toggle("infocus")
-      // }
     }
+   //end of words highlight 
+
+   //supplementary material
+  var suplMat =  document.getElementsByClassName("sumplementaryMaterialPreview")
+
+  // end suplMat
+
+
+
   } 
+
+
+ 
 
 
 }
