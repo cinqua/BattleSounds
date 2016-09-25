@@ -257,12 +257,14 @@ function addPreview(element){
     var previewImage = new Image();
     previewImage.id = element.n;
     previewImage.src = element.thumbnail;
+    previewImage.dataset.startTime = element.seconds_start;
+    previewImage.dataset.endTime = element.seconds_end;
     previewImage.className= "sumplementaryMaterialPreview bnw";
      // previewImage.className= "bnw";
 
     previewImage.addEventListener("click", function(){
   
-      previewImage.classList.toggle("bnw");
+      // previewImage.classList.toggle("bnw");
       openNav()
 
       document.getElementById("supplementaryMaterialSidebar").innerHTML ="";
@@ -320,6 +322,23 @@ function loadVideo(config){
    //supplementary material
   var suplMat =  document.getElementsByClassName("sumplementaryMaterialPreview")
 
+  for(var g = 0; g< suplMat.length; g++){
+    var suplMatElem = suplMat[g];
+     if(parseFloat(suplMatElem.dataset.startTime) < parseFloat(this.currentTime)){ 
+        if(suplMatElem.classList.contains('infocusSuplElem')){
+          suplMatElem.classList.toggle("infocusSuplElem")
+        } 
+      }else{
+        if(!suplMatElem.classList.contains('infocusSuplElem')){
+          suplMatElem.classList.toggle("infocusSuplElem")
+        } 
+      }
+
+      if(parseFloat(suplMatElem.dataset.endTime) > parseFloat(this.currentTime)){
+           suplMatElem.classList.toggle("infocusSuplElem")
+
+      }
+  }
   // end suplMat
 
 

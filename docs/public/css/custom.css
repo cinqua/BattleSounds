@@ -24,6 +24,14 @@ img.bnw {
             filter: grayscale(100%)!important; 
 }
 
+img.bnw:hover {
+    -webkit-filter: grayscale(0%)!important;
+       -moz-filter: grayscale(0%)!important;
+         -o-filter: grayscale(0%)!important;
+        -ms-filter: grayscale(0%)!important;
+            filter: grayscale(0%)!important; 
+}
+
 
 .googleFont{
 font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -47,4 +55,9 @@ div#mainVideoText {
 
 .infocus{
  color: white;   
+}
+
+.infocusSuplElem{
+     border: 5px solid white;
+
 }
