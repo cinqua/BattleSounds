@@ -27,6 +27,7 @@ from toolbar, import bml library.
 [some more sumbol libraries](https://mockupstogo.mybalsamiq.com/projects)
 
 
+
 ## Table top 
 
 See table top REAMDE for [instructions](https://github.com/jsoma/tabletop)
@@ -55,6 +56,10 @@ use github and put project containing `index.html` inside a colder called `docs`
 Make sure your [`.gitignore`](/.gitignore) excludes media file. and store video /audio elsewhere, eg dropbox public folder, or amazon s3 bucket. Don't commit media to git. makes the repo heavy, because of how git stores snapshots of files.
 
 if you got custom domain it automatically make the github page with your domain + suffix of project eg `http://pietropassarelli.com/BattleSounds` with no extra effort. 
+
+
+## HTML5 Video
+[current time property](http://www.w3schools.com/tags/av_prop_currenttime.asp)
 
 ## Google drive for slides 
 

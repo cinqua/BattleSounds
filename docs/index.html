@@ -265,7 +265,9 @@ function addPreview(element){
     previewImage.addEventListener("click", function(){
   
       // previewImage.classList.toggle("bnw");
-      openNav()
+      //pause main
+      document.getElementById("mainVideo").pause();
+      openNav();
 
       document.getElementById("supplementaryMaterialSidebar").innerHTML ="";
       addVideo(element,"supplementaryMaterialSidebar","preview" )
