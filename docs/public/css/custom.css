@@ -13,4 +13,11 @@ div#summplementaryMaterial {
 }
 
 
+img.bnw {
+    -webkit-filter: grayscale(100%)!important;
+       -moz-filter: grayscale(100%)!important;
+         -o-filter: grayscale(100%)!important;
+        -ms-filter: grayscale(100%)!important;
+            filter: grayscale(100%)!important; 
+}
 
