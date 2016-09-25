@@ -135,7 +135,7 @@ with difference that is an older version, and this version is node based and all
 
 ### Caption burner 
 
-![captions tool](/img/captions.png)
+![captions tool](/img/caption.png)
 
 ![Twitter export](/img/twitter_captions.png)
 
