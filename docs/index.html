@@ -34,7 +34,7 @@
 <div class="container">
    <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8
-    col-sm-offset-1 col-md-offset-1 col-lg-offset-2"> 
+    col-sm-offset-1 col-md-offset-1 col-lg-offset-1"> 
     <h1 class="title" ><span id="mainVideoTitle"></span> <small id="mainVideoDescription"></small></h1>
     </div>
   </div>
@@ -254,12 +254,31 @@ function addPreview(element){
 
 
     var parent = document.getElementById("summplementaryMaterial");
+
+
+    //create div
+    // var iDiv = document.createElement('div');
+    // // iDiv.style.display='inherit';
+    // iDiv.className ="suplMatDiv"; 
+    // var h2 = document.createElement('h6');
+    // var t = document.createTextNode(element.title);
+    // h2.appendChild(t)
+    // iDiv.appendChild(h2)
+    //create h2 text
+
+    //create node text
+
+    //add node text to h1
+
+    // add h1 to div 
+
     var previewImage = new Image();
     previewImage.id = element.n;
     previewImage.src = element.thumbnail;
     previewImage.dataset.startTime = element.seconds_start;
     previewImage.dataset.endTime = element.seconds_end;
     previewImage.className= "sumplementaryMaterialPreview bnw";
+
      // previewImage.className= "bnw";
 
     previewImage.addEventListener("click", function(){
@@ -273,10 +292,10 @@ function addPreview(element){
       addVideo(element,"supplementaryMaterialSidebar","preview" )
 
     });
-    // previewImage.className = "film";
-    //add link 
-    // console.log(previewImage)
-    // divElementClip.appendChild(previewImage); 
+ 
+    //append image to div 
+    // iDiv.appendChild(previewImage)
+    //append div instead of image
     parent.appendChild(previewImage); 
 }
 
@@ -342,13 +361,7 @@ function loadVideo(config){
       }
   }
   // end suplMat
-
-
-
   } 
-
-
- 
 
 
 }

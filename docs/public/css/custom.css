@@ -1,8 +1,15 @@
-/* custom.css */
 
+
+
+.suplMatDiv{
+    /*display: inline-block!important;*/
+/*    width: 219px;
+    height: 200px;*/
+}
 
 .sumplementaryMaterialPreview{
 	width: 30%;
+    /*width: 90%;*/
 }
 
 div#summplementaryMaterial {
