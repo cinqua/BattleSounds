@@ -12,6 +12,9 @@ div#summplementaryMaterial {
     white-space: nowrap;
 }
 
+.sumplementaryMaterialPreview {
+    cursor: pointer!important;
+}
 
 img.bnw {
     -webkit-filter: grayscale(100%)!important;
@@ -20,4 +23,5 @@ img.bnw {
         -ms-filter: grayscale(100%)!important;
             filter: grayscale(100%)!important; 
 }
+
 

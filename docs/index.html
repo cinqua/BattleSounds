@@ -63,12 +63,15 @@
   </div>
 
 
-  <div  id="myNav" class="overlay container">
+  <div  id="myNav" class="overlay ">
     <!-- <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">  -->
       <!-- Button to close the overlay navigation -->
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
       <div class="overlay-content">
-        some content
+        <div id="supplementaryMaterialSidebar">
+          yo
+        </div>
       <!-- </div> -->
      </div>
   </div>
@@ -111,10 +114,12 @@ function addMainVideo(videoElement){
     url: videoElement.url,
     playerId:'mainVideo' , 
     srcId:'mainVideoSrc',
-    posterImg: videoElement.thumbnail
+    thumbnail: videoElement.thumbnail
   })
   addText(videoElement.title, "mainVideoTitle")
   addText(videoElement.description, "mainVideoDescription")
+
+
 }
 
 function addText(title, titleId){
@@ -157,6 +162,19 @@ function addSupplemntaryElement(element){
         }//end switch
 }
 
+function addVideo(videoElem, parentId, className){
+ 
+  var parent = document.getElementById(parentId)
+  var video = document.createElement('video');
+  video.id = videoElem.n;
+  video.className = className;
+  video.src = videoElem.url;
+  video.poster = videoElem.thumbnail
+   video.setAttribute("controls","controls")   
+  console.log(video)
+  parent.appendChild(video); 
+}
+
 function addPreview(element){
   // var divElementClip = document.createElement("Div");
   // divElementClip.className = "clip";
@@ -173,6 +191,10 @@ function addPreview(element){
     previewImage.addEventListener("click", function(){
   
       previewImage.classList.toggle("bnw");
+       openNav()
+
+       document.getElementById("supplementaryMaterialSidebar").innerHTML ="";
+         addVideo(element,"supplementaryMaterialSidebar","preview" )
 
     });
     // previewImage.className = "film";
@@ -184,24 +206,7 @@ function addPreview(element){
 
 
 
-function addVideo(videoElem, parentId, className){
- 
-  var parent = document.getElementById(parentId)
-  var video = document.createElement('video');
-  video.id = videoElem.n;
-  video.className = className;
-  video.src = videoElem.url;
-  video.poster = videoElem.posterImg;
-  console.log(video)
-  parent.appendChild(video); 
 
-  // loadVideo({
-  //   url: videoElem.url,
-  //   playerId:'summplementaryMaterial' , 
-  //   srcId: videoElem.n
-  // })
-
-}
 
 /**
 * params config object iwth url, playerId, srcId
@@ -211,9 +216,16 @@ function loadVideo(config){
   var player = document.getElementById(config.playerId);
   var mp4Vid = document.getElementById(config.srcId);
   mp4Vid.src =config.url;
-  player.poster = config.posterImg;
+  player.poster = config.thumbnail;
   console.log(player)
   player.load();
+
+  // player.addEventListener("onPlay", function(){
+  
+  //     previewImage.classList.toggle("bnw");
+
+  // });
+
 }
 
 
@@ -230,6 +242,7 @@ function openNav() {
 
 function closeNav() {
     document.getElementById("myNav").style.height = "0%";
+    document.getElementById("supplementaryMaterialSidebar").innerHTML ="";
 }
 </script>
 
