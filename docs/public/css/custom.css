@@ -41,5 +41,10 @@ div#mainVideoText {
 }
 
 .words{
+    color: grey;
     cursor: pointer;
+}
+
+.infocus{
+ color: white;   
 }

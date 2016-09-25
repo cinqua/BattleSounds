@@ -54,6 +54,8 @@ use github and put project containing `index.html` inside a colder called `docs`
 
 Make sure your [`.gitignore`](/.gitignore) excludes media file. and store video /audio elsewhere, eg dropbox public folder, or amazon s3 bucket. Don't commit media to git. makes the repo heavy, because of how git stores snapshots of files.
 
+if you got custom domain it automatically make the github page with your domain + suffix of project eg `http://pietropassarelli.com/BattleSounds` with no extra effort. 
+
 ## Google drive for slides 
 
 [slides](https://docs.google.com/presentation/d/19TB4CpkCDqMJQvhmZF3I9AN7IQ0VsIA8nsfpdHkfDss/edit#slide=id.p)
@@ -111,3 +113,9 @@ http://www.dafont.com/vcr-osd-mono.font
 https://fonts.google.com
 
 https://fonts.google.com/specimen/Gochi+Hand?selection.family=Gochi+Hand
+
+
+## Video screen grab 
+https://github.com/fakob/MoviePrint_v002/blob/master/MoviePrint.xcodeproj/project.pbxproj
+
+http://www.fakob.com/2014/movieprint-an-osx-tool/

@@ -106,13 +106,13 @@ function init() {
       var element = data[i];
       if(element.content == "main_video"){
         console.log("main")
-        console.log(element)
+        // console.log(element)
 
         addMainVideo(element)
 
       }else if(element.content == "supplementary_material"){
-        console.log(element)
-          console.log(element.media_type)
+        // console.log(element)
+          // console.log(element.media_type)
         addSupplemntaryElement(element)
       }
     }
@@ -129,21 +129,21 @@ function addMainVideo(videoElement){
   addText(videoElement.title, "mainVideoTitle")
   addText(videoElement.description, "mainVideoDescription")
 
-  console.log("JSON")
-  console.log(videoElement.transcription_json)
+  // console.log("JSON")
+  // console.log(videoElement.transcription_json)
   //Fetch the json 
   $.getJSON(videoElement.transcription_json, function(json) {
-    console.log("JSON recived")
-    console.log(json)
-    console.log(); // this will show the info it in firebug console
+    // console.log("JSON recived")
+    // console.log(json)
+    // console.log(); // this will show the info it in firebug console
 
     var lines = json.text[0].paragraph;
 
     var textResult =""
     for(var i =0; i<lines.length; i++){
       var line = lines[i].line;
-           console.log(line);
-          console.log( renderLine(line,mainVideoId))
+           // console.log(line);
+          // console.log( renderLine(line,mainVideoId))
           textResult +=renderLine(line, mainVideoId)
       // for (var j = 0; line.length; j++){
       //   var word = line[j];
@@ -153,8 +153,8 @@ function addMainVideo(videoElement){
     }
 
     //append textResult transcription 
-    console.log("textResult")
-    console.log(textResult)
+    // console.log("textResult")
+    // console.log(textResult)
 
     addTranscriptionToMainVideo(textResult, "mainVideoText");
 
@@ -189,9 +189,10 @@ function playVideo(videoId,startTime){
   video.currentTime = startTime;
   // video.load();
   //change color of video
+
   video.play();
 
-}
+};
 
 function addText(title, titleId){
   document.getElementById(titleId).innerText =title;
@@ -292,9 +293,59 @@ function loadVideo(config){
   //     previewImage.classList.toggle("bnw");
 
   // });
+ player.ontimeupdate = function() {
+    console.log("playing")
+    var words =   document.getElementsByClassName("words")
+
+    for(var i =0; i< words.length; i++){
+      var word = words[i];
+       
+      console.log(parseInt(word.dataset.startTime))
+      console.log(parseInt(this.currentTime))
+      if(parseInt(word.dataset.startTime) < parseInt(this.currentTime)){ 
+        if(!word.classList.contains('infocus')){
+          word.classList.toggle("infocus")
+        } 
+      }else{
+        if(word.classList.contains('infocus')){
+          word.classList.toggle("infocus")
+        } 
+      }
+
+
+
+
+      // if(parseInt(word.dataset.startTime) > parseInt(this.currentTime)){
+      //   console.log(parseInt(word.dataset.startTime))
+      //   console.log(parseInt(this.dataset.currentTime))
+      //   // word.classList.toggle("infocus")
+      //   document.getElementsByClassName("words")[i].classList.toggle("infocus")
+      // }else{
+      //    // word.classList.toggle("infocus")
+      //    document.getElementsByClassName("words")[i].classList.toggle("infocus")
+      // }
+    }
+  } 
+
 
 }
 
+// var mainVideo = document.getElementById("mainVideo")
+// mainVideo.onplaying = function() {
+//     var words =   document.getElementsByClassName("words")
+
+//     for(var i =0; i< words.length; i++){
+//       var word = words[i];
+      
+//       if(parseInt(word.startTime) < parseInt(this.currentTime)){
+//         console.log(parseInt(word.startTime))
+//         console.log(parseInt(this.currentTime))
+//         word.classList.toggle("infocus")
+//       }else{
+//          word.classList.toggle("infocus")
+//       }
+//     }
+//   } 
 
 
 
