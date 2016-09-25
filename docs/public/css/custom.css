@@ -25,3 +25,21 @@ img.bnw {
 }
 
 
+.googleFont{
+font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+
+.title{
+
+}
+
+
+div#mainVideoText {
+    height: 58vh;
+    overflow-y: scroll;
+}
+
+.words{
+    cursor: pointer;
+}

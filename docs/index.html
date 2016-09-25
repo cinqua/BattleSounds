@@ -20,6 +20,8 @@
     <script src="vendor/js/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="vendor/js/bootstrap.min.js"></script>
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,15 +35,15 @@
    <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8
     col-sm-offset-1 col-md-offset-1 col-lg-offset-2"> 
-    <h1 ><span id="mainVideoTitle"></span> <small id="mainVideoDescription"></small></h1>
+    <h1 class="title" ><span id="mainVideoTitle"></span> <small id="mainVideoDescription"></small></h1>
     </div>
   </div>
   
   <!--Main player  8 -->
 
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8
-    col-sm-offset-1 col-md-offset-1 col-lg-offset-2"> 
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8
+    col-sm-offset-1 col-md-offset-1 col-lg-offset-1 "> 
       <div class="centerBlock">
         <video id="mainVideo"width="100%" height="100%" class="img-responsive" controls>
           <source id="mainVideoSrc" src="dummy.mp4" type="video/mp4">
@@ -49,11 +51,16 @@
         </video>
       </div>
     </div>
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2"> 
+        <div id="mainVideoText">
+          Transcription 
+        </div>
+    </div>
   </div>
 
   <div class="row" >
-     <div  class="col-xs-12 col-sm-10 col-md-10 col-lg-8
-    col-sm-offset-1 col-md-offset-1 col-lg-offset-2"> 
+     <div  class="col-xs-12 col-sm-10 col-md-10 col-lg-10
+    col-sm-offset-1 col-md-offset-1 col-lg-offset-1"> 
       <hr>
       <div id="summplementaryMaterial">
            <!-- sumpplementary material -->
@@ -70,7 +77,7 @@
 
       <div class="overlay-content">
         <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8
-          col-sm-offset-1 col-md-offset-1 col-lg-offset-2"> 
+          col-sm-offset-2 col-md-offset-2 col-lg-offset-3"> 
           <div id="supplementaryMaterialSidebar">
             yo
           </div>
@@ -94,7 +101,6 @@ function init() {
                    simpleSheet: true } );
 }
 
-
   function showInfo(data, tabletop) {
     for (var i=0; i<data.length; i++){
       var element = data[i];
@@ -113,22 +119,83 @@ function init() {
   }
 
 function addMainVideo(videoElement){
+ var mainVideoId = "mainVideo";
    loadVideo({
     url: videoElement.url,
-    playerId:'mainVideo' , 
+    playerId: mainVideoId, 
     srcId:'mainVideoSrc',
     thumbnail: videoElement.thumbnail
   })
   addText(videoElement.title, "mainVideoTitle")
   addText(videoElement.description, "mainVideoDescription")
 
+  console.log("JSON")
+  console.log(videoElement.transcription_json)
+  //Fetch the json 
+  $.getJSON(videoElement.transcription_json, function(json) {
+    console.log("JSON recived")
+    console.log(json)
+    console.log(); // this will show the info it in firebug console
+
+    var lines = json.text[0].paragraph;
+
+    var textResult =""
+    for(var i =0; i<lines.length; i++){
+      var line = lines[i].line;
+           console.log(line);
+          console.log( renderLine(line,mainVideoId))
+          textResult +=renderLine(line, mainVideoId)
+      // for (var j = 0; line.length; j++){
+      //   var word = line[j];
+      //   console.log(word)
+
+      // }
+    }
+
+    //append textResult transcription 
+    console.log("textResult")
+    console.log(textResult)
+
+    addTranscriptionToMainVideo(textResult, "mainVideoText");
+
+});
+}
+
+
+function addTranscriptionToMainVideo(textDivs, parentId){
+  var textDiv = document.getElementById(parentId)
+  textDiv.innerHTML = textDivs;
+
+}
+
+function renderLine(line,videoId){
+  var result = ""
+  for(var k=0; k<line.length; k++){
+      
+    // console.log("render")
+    // console.log(line[k].startTime);
+    // console.log(line[k].text);
+    // console.log(line[k].id);
+
+    result += "<span class='googleFont words' onclick=\"playVideo('"+videoId+"',"+line[k].startTime+")\"' data-start-time='"+line[k].startTime+"' id='word_"+line[k].id+"'"+">"+line[k].text+" </span>";
+    
+  }
+  return result
+
+}
+
+function playVideo(videoId,startTime){
+  var video = document.getElementById(videoId);
+  video.currentTime = startTime;
+  // video.load();
+  //change color of video
+  video.play();
 
 }
 
 function addText(title, titleId){
   document.getElementById(titleId).innerText =title;
 }
-
 
 /**
 * to add sumplementary material element, looks at `media_type`
@@ -155,18 +222,15 @@ function addSupplemntaryElement(element){
       case "vimeo":
           // addVimeo(element);
           break;
-
       case "youtube":
           // addNews(element);
           break;
-
       default:
           console.log("invalid type");
         }//end switch
 }
 
 function addVideo(videoElem, parentId, className){
- 
   var parent = document.getElementById(parentId)
   var video = document.createElement('video');
   video.id = videoElem.n;
@@ -210,10 +274,6 @@ function addPreview(element){
     // divElementClip.appendChild(previewImage); 
     parent.appendChild(previewImage); 
 }
-
-
-
-
 
 /**
 * params config object iwth url, playerId, srcId

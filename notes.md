@@ -70,10 +70,11 @@ Make sure your [`.gitignore`](/.gitignore) excludes media file. and store video 
 [seriously js](http://seriouslyjs.org/)
 
 ## Google spreadsheet custom functions (TC calculator)
-[timecode claulator on google sheet](https://latenitefilms.com/blog/calculating-timecode-in-google-sheets/)
+inspired by [timecode claulator on google sheet](https://latenitefilms.com/blog/calculating-timecode-in-google-sheets/)
 
+However easier to do with 
 
-Tools -> scirpt editor 
+`Tools` -> `scirpt editor`
 
 ```
 /**
@@ -93,3 +94,20 @@ function timecode_to_seconds(tc) {
 in excell sheet
 
 `=timecode_to_seconds(F2)` where in this case `F2` for example will contain a timecode `00:01:30:00` that will then be rendered as 90 (secs)
+
+
+
+## Convert videos for HTML5 
+[Miro Video converter](http://www.getmiro.com)
+
+
+
+## VCR font 
+
+http://www.dafont.com/vcr-osd-mono.font
+
+
+## Google font 
+https://fonts.google.com
+
+https://fonts.google.com/specimen/Gochi+Hand?selection.family=Gochi+Hand
